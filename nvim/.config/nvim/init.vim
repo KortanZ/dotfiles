@@ -29,7 +29,7 @@ nnoremap <A-l> <C-w>l
 " Load packager only when you need it
 function! PackagerInit() abort
     packadd vim-packager
-    call packager#init()
+    call packager#init({ 'dir': $XDG_DATA_HOME . "/nvim/site/pack/packager" })
     call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
     call packager#add('easymotion/vim-easymotion')
     call packager#add('neovim/nvim-lsp', { 'type': 'opt'})
