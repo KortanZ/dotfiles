@@ -83,7 +83,9 @@ let g:lightline = {
 
 colorscheme one
 "change to default background
-set background=light " for the light version
+" set background=light " for the light version
+
+" unset background
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 " set background=dark " for the dark version
 " <<<<== theme config ==<<<<
