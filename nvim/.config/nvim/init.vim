@@ -34,6 +34,7 @@ function! PackagerInit() abort
     call packager#add('easymotion/vim-easymotion')
     call packager#add('neovim/nvim-lsp', { 'type': 'opt'})
     call packager#add('scrooloose/nerdtree')
+    call packager#add('junegunn/fzf.vim')
     " vim-lsp
     call packager#add('prabirshrestha/vim-lsp')
     call packager#add('prabirshrestha/async.vim')
