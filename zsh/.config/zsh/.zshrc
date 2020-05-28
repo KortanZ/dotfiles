@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#prepare dirctoris
+# prepare dirctoris
 if [[ ! -d $XDG_CACHE_HOME/zsh ]]; then
     mkdir $XDG_CACHE_HOME/zsh
 fi
@@ -31,6 +31,9 @@ typeset -A ZINIT=(
 )
 source $XDG_DATA_HOME/zsh/zinit/bin/zinit.zsh
 
+# load fzf-tab
+zinit light Aloxaf/fzf-tab
+
 # completion suggestion
 zinit ice blockf atpull'zinit creinstall -q .'
 zinit light zsh-users/zsh-completions
@@ -43,6 +46,7 @@ compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 zinit light-mode for \
         zdharma/fast-syntax-highlighting \
         zsh-users/zsh-autosuggestions
+
 # p10k theme
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
