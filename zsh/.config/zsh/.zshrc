@@ -1,3 +1,15 @@
+# use tmux session 0 when open new non-embedded interactive shell
+if [[ "$TMUX" == "" && $- == *i* ]]; then
+    if [[ ! "$(</proc/$PPID/cmdline)" =~ "/usr/bin/(dolphin|nvim|kate)" ]]; then
+        tmux has-session -t 0 2> /dev/null
+        if [[ $? == 1 ]]; then
+            exec tmux new -s 0
+        else
+            exec tmux a -t 0
+        fi
+    fi
+fi
+
 # p10k config auto generated
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
