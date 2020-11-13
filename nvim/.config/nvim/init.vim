@@ -23,6 +23,12 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+" bracket auto complete
+inoremap " ""<ESC>i
+inoremap ' ''<ESC>i
+inoremap ( ()<ESC>i
+inoremap [ []<ESC>i
+inoremap { {}<ESC>i
 " <<<<== general config ==<<<<
 
 " >>>>== vim-packager config ==>>>>
@@ -31,10 +37,10 @@ function! PackagerInit() abort
     packadd vim-packager
     call packager#init({ 'dir': $XDG_DATA_HOME . "/nvim/site/pack/packager" })
     call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
-    call packager#add('easymotion/vim-easymotion')
     call packager#add('neovim/nvim-lsp', { 'type': 'opt'})
-    call packager#add('scrooloose/nerdtree')
     call packager#add('junegunn/fzf.vim')
+    call packager#add('justinmk/vim-sneak')
+    call packager#add('tpope/vim-surround')
     " vim-lsp
     call packager#add('prabirshrestha/vim-lsp')
     call packager#add('prabirshrestha/async.vim')
@@ -78,9 +84,9 @@ inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 set noshowmode
 set termguicolors " open 256-color support
 " set lightline theme to one
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'one',
+"       \ }
 
 colorscheme one
 "change to default background
