@@ -15,5 +15,6 @@ require('packager').setup(function(packager)
     add('akinsho/bufferline.nvim')
     add('kyazdani42/nvim-web-devicons')
     add('navarasu/onedark.nvim')
+    add('sindrets/diffview.nvim')
     
 end, {dir = vim.env.XDG_DATA_HOME .. '/nvim/site/pack/packager'})
