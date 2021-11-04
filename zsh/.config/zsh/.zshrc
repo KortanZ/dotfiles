@@ -1,6 +1,6 @@
-# use tmux session 0 when open new non-embedded interactive shell
+# use tmux session 0 when open new non-embedded interactive shell over ssh
 if [[ "$TMUX" == "" && $- == *i* ]]; then
-    if [[ ! "$(</proc/$PPID/cmdline)" =~ "/usr/bin/(dolphin|nvim|kate)" ]]; then
+    if [[ "$(</proc/$PPID/cmdline)" =~ "^sshd:.*" ]]; then
         tmux has-session -t 0 2> /dev/null
         if [[ $? == 1 ]]; then
             exec tmux new -s 0
