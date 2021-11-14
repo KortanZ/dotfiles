@@ -28,40 +28,30 @@ if [[ ! -d $XDG_DATA_HOME/zsh ]]; then
 fi
 
 # change history file location
-HISTFILE=$XDG_DATA_HOME/zsh/history
-HISTSIZE=1000
-SAVEHIST=500
+HISTFILE=$XDG_CACHE_HOME/zsh/zhistory
+HISTSIZE=20000
+SAVEHIST=10000
+# Remove older command from the history if a duplicate is to be added.
+setopt HIST_IGNORE_ALL_DUPS
+# Don't display duplicates when searching the history.
+setopt HIST_FIND_NO_DUPS
+# Don't enter immediate duplicates into the history.
+setopt HIST_IGNORE_DUPS
+# Remove commands from the history that begin with a space.
+setopt HIST_IGNORE_SPACE
+# Don't execute the command directly upon history expansion.
+setopt HIST_VERIFY
+# Cause all terminals to share the same history 'session'.
+setopt SHARE_HISTORY
 
+zstyle ':zim:completion' dumpfile "$XDG_CACHE_HOME/zsh/zcompdump"
 # load alias
 source $ZDOTDIR/.alias.zsh
-
-# load zinit
-typeset -A ZINIT=(
-    BIN_DIR         $XDG_DATA_HOME/zsh/zinit/bin
-    HOME_DIR        $XDG_DATA_HOME/zsh/zinit
-    COMPINIT_OPTS   -C
-)
-source $XDG_DATA_HOME/zsh/zinit/bin/zinit.zsh
-
-# load fzf-tab
-zinit light Aloxaf/fzf-tab
-
-# completion suggestion
-zinit ice blockf atpull'zinit creinstall -q .'
-zinit light zsh-users/zsh-completions
-
-# change zcompdump location
-autoload -U compinit
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
-
-# syntax highlight
-zinit light-mode for \
-        zdharma/fast-syntax-highlighting \
-        zsh-users/zsh-autosuggestions
-
-# p10k theme
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+source ${ZIM_HOME}/init.zsh
 
 # p10k config auto generated
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
