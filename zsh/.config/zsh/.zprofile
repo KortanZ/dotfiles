@@ -5,5 +5,4 @@ export PATH="$CARGO_HOME/bin:$PATH"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
-export ZIM_HOME=$XDG_DATA_HOME/zsh/zim
 export XINITRC="$XDG_CONFIG_HOME/X11/.xinitrc"
