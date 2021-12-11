@@ -2,7 +2,7 @@ require('packager').setup(function(packager)
     local add = packager.add
     add('kristijanhusak/vim-packager')
     add('neovim/nvim-lspconfig')
-    add('nvim-treesitter/nvim-treesitter')
+    add('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
     add('justinmk/vim-sneak')
     add('tpope/vim-surround')
     add('lukas-reineke/indent-blankline.nvim')
