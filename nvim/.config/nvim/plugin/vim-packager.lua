@@ -6,6 +6,7 @@ require('packager').setup(function(packager)
 
     add('tpope/vim-surround')
     add('lukas-reineke/indent-blankline.nvim')
+    add('kyazdani42/nvim-tree.lua')
 
     add('hrsh7th/nvim-cmp', {
         requires = {'hrsh7th/vim-vsnip', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp'}})
