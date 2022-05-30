@@ -2,10 +2,10 @@ require('packager').setup(function(packager)
     local add = packager.add
     add('kristijanhusak/vim-packager')
     add('neovim/nvim-lspconfig')
-    add('nvim-treesitter/nvim-treesitter')
+    add('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
+
     add('tpope/vim-surround')
     add('lukas-reineke/indent-blankline.nvim')
-    add('kyazdani42/nvim-tree.lua')
 
     add('hrsh7th/nvim-cmp', {
         requires = {'hrsh7th/vim-vsnip', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp'}})
