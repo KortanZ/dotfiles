@@ -1,12 +1,10 @@
 # use tmux session 0 when open new non-embedded interactive shell over ssh
 if [[ "$TMUX" == "" && $- == *i* ]]; then
-    if [[ "$(</proc/$PPID/cmdline)" =~ "^sshd:.*" ]]; then
-        tmux has-session -t 0 2> /dev/null
-        if [[ $? == 1 ]]; then
-            exec tmux new -s 0
-        else
-            exec tmux a -t 0
-        fi
+    tmux has-session -t 0 2> /dev/null
+    if [[ $? == 1 ]]; then
+        exec tmux new -s 0
+    else
+        exec tmux a -t 0
     fi
 fi
 
@@ -28,7 +26,7 @@ if [[ ! -d $XDG_DATA_HOME/zsh ]]; then
 fi
 
 # change history file location
-HISTFILE=$XDG_CACHE_HOME/zsh/zhistory
+HISTFILE=$XDG_CACHE_HOME/zsh/.zhistory
 HISTSIZE=20000
 SAVEHIST=10000
 # Remove older command from the history if a duplicate is to be added.
@@ -44,25 +42,35 @@ setopt HIST_VERIFY
 # Cause all terminals to share the same history 'session'.
 setopt SHARE_HISTORY
 
-zstyle ':zim:completion' dumpfile "$XDG_CACHE_HOME/zsh/zcompdump"
 # load alias
 source $ZDOTDIR/.alias.zsh
 
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  # Download zimfw script if missing.
-  command mkdir -p ${ZIM_HOME}
-  if (( ${+commands[curl]} )); then
-    command curl -fsSL -o ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  else
-    command wget -nv -O ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  fi
-fi
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-  # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
-  source ${ZIM_HOME}/zimfw.zsh init -q
-fi
-source ${ZIM_HOME}/init.zsh
+typeset -A ZINIT=(
+    ZCOMPDUMP_PATH  $XDG_CACHE_HOME/zsh/.zcompdump
+    COMPINIT_OPTS   -C
+)
+
+source "${ZINIT_HOME}/zinit.zsh"
+
+zinit light zsh-users/zsh-completions
+
+# Load powerlevel10k theme
+zinit ice depth"1" # git clone depth
+zinit light romkatv/powerlevel10k
+
+zpcompinit; zpcdreplay
+
+zinit light Aloxaf/fzf-tab
+
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit light zsh-users/zsh-autosuggestions
+
+zinit light zsh-users/zsh-history-substring-search
 
 # p10k config auto generated
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.

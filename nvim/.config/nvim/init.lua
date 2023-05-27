@@ -18,7 +18,7 @@ g.mapleader = "m"
 require("bufferline").setup()
 opt.termguicolors = true
 require('onedark').load()
-cmd [[set noshowmode]]
+opt.showmode = false
 
 require('Comment').setup()
 require('nvim-tree').setup()

@@ -6,16 +6,15 @@ require('packager').setup(function(packager)
 
     add('tpope/vim-surround')
     add('lukas-reineke/indent-blankline.nvim')
-    add('kyazdani42/nvim-tree.lua')
+    add('kyazdani42/nvim-tree.lua',{requires = { 'nvim-tree/nvim-web-devicons'}})
 
     add('hrsh7th/nvim-cmp', {
         requires = {'hrsh7th/vim-vsnip', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp'}})
-    add('nvim-telescope/telescope.nvim',{requires = {'nvim-lua/plenary.nvim'}})
+    add('ibhagwan/fzf-lua',{requires = { 'nvim-tree/nvim-web-devicons'}})
     add("liuchengxu/vista.vim")
 
-    add('feline-nvim/feline.nvim')
-    add('akinsho/bufferline.nvim')
-    add('kyazdani42/nvim-web-devicons')
+    add('nvim-lualine/lualine.nvim',{requires = { 'nvim-tree/nvim-web-devicons'}})
+    add('akinsho/bufferline.nvim',{requires = { 'nvim-tree/nvim-web-devicons'}})
     add('navarasu/onedark.nvim')
     add('sindrets/diffview.nvim')
     add('numToStr/Comment.nvim')

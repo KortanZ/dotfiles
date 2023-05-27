@@ -19,7 +19,7 @@ map('n', '<leader>l', '<C-w>l', default_opt)
 -- inoremap [ []<ESC>i
 -- inoremap { {}<ESC>i
 
-map('n', '<C-p>', ':Telescope find_files<CR>', default_opt)
+map('n', '<C-p>', ':FzfLua files<CR>', default_opt)
 
 map('n', '<leader>b', '<C-w>l', default_opt)
 map('n', '<leader>t', ':NvimTreeToggle<CR>', default_opt)

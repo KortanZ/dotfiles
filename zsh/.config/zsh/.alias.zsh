@@ -1,2 +1,2 @@
 alias vim='nvim'
-alias sudo='doas '
+alias ls='exa '
