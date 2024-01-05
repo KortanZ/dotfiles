@@ -1,2 +1,2 @@
 alias vim='nvim'
-alias ls='exa '
+alias ls='eza '
