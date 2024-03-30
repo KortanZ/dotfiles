@@ -8,5 +8,6 @@ require('orgmode').setup({
       org = {
           org_toggle_checkbox = '<prefix>tt',
       },
+  },
 
 })
