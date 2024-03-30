@@ -14,7 +14,7 @@ opt.clipboard = "unnamedplus"
 opt.termguicolors = true
 opt.showmode = false
 opt.conceallevel = 2
-opt.foldlevelstart = 99
+opt.concealcursor = 'nc'
 
 g.mapleader = "m"
 

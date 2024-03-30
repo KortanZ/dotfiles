@@ -1,11 +1,12 @@
-# use tmux session 0 when open new non-embedded interactive shell over ssh
 if [[ "$TMUX" == "" && $- == *i* ]]; then
     tmux has-session -t 0 2> /dev/null
     if [[ $? == 1 ]]; then
-        exec tmux new -s 0
+        tmux 
     else
-        exec tmux a -t 0
+        tmux a
     fi
+
+    exit
 fi
 
 # p10k config auto generated

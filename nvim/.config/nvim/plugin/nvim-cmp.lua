@@ -7,7 +7,7 @@ cmp.setup({
     sources = {
         {name = 'nvim_lsp'},
         {name = 'path'},
-        {name = 'neorg'},
+        {name = 'orgmode'},
         {
             name = 'buffer',
             options = {
