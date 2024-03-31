@@ -1,12 +1,5 @@
-if [[ "$TMUX" == "" && $- == *i* ]]; then
-    tmux has-session -t 0 2> /dev/null
-    if [[ $? == 1 ]]; then
-        tmux 
-    else
-        tmux a
-    fi
-
-    exit
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    exec tmux new-session -A -s ${USER} >/dev/null 2>&1
 fi
 
 # p10k config auto generated
