@@ -10,9 +10,11 @@ require('packager').setup(function(packager)
 
     add('hrsh7th/nvim-cmp', {
         requires = {'hrsh7th/vim-vsnip', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-nvim-lsp'}})
-    add('ibhagwan/fzf-lua',{requires = { 'nvim-tree/nvim-web-devicons'}})
+    add('ibhagwan/fzf-lua',{requires = {'nvim-tree/nvim-web-devicons'}})
 
-    add('nvim-lualine/lualine.nvim',{requires = { 'nvim-tree/nvim-web-devicons', 'linrongbin16/lsp-progress.nvim'}})
+    add('jiaoshijie/undotree',{requires = {'nvim-lua/plenary.nvim'}})
+
+    add('nvim-lualine/lualine.nvim',{requires = {'nvim-tree/nvim-web-devicons', 'linrongbin16/lsp-progress.nvim'}})
     add('navarasu/onedark.nvim')
     add('sindrets/diffview.nvim')
     add('numToStr/Comment.nvim')

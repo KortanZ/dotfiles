@@ -22,6 +22,7 @@ g.mapleader = "m"
 -- plugins
 require('onedark').load()
 require("fzf-lua").setup()
+require('undotree').setup()
 require("ibl").setup()
 require('Comment').setup()
 require('nvim-tree').setup()
