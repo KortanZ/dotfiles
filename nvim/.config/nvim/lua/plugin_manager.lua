@@ -92,7 +92,11 @@ require('pckr').add{
             require('flash').setup()
         end
     };
-    {'kylechui/nvim-surround'};
+    {'kylechui/nvim-surround',
+        config = function()
+            require('nvim-surround').setup()
+        end
+    };
 
     -- GTD & notes
     {'nvim-orgmode/orgmode',
