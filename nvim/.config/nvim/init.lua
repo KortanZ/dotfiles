@@ -19,13 +19,5 @@ opt.concealcursor = 'nc'
 
 g.mapleader = "m"
 
--- plugins
-require('onedark').load()
-require("fzf-lua").setup()
-require('undotree').setup()
-require("ibl").setup()
-require('Comment').setup()
-require('nvim-tree').setup()
-require('flash').setup()
-require('nvim-cursorline').setup()
-require('lsp-progress').setup()
+require('plugin_manager')
+require('keymap')
