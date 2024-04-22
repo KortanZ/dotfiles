@@ -12,6 +12,7 @@ map('n', '<leader>h', '<C-w>h', default_opt)
 map('n', '<leader>j', '<C-w>j', default_opt)
 map('n', '<leader>k', '<C-w>k', default_opt)
 map('n', '<leader>l', '<C-w>l', default_opt)
+map('n', '<leader>=', '<C-w>=', default_opt)
 
 
 if next(tags_loaded) ~= nil then
