@@ -17,7 +17,7 @@ opt.relativenumber = true
 opt.conceallevel = 2
 opt.concealcursor = 'nc'
 
-g.mapleader = "m"
+g.mapleader = ";"
 
 require('plugin_manager')
 require('keymap')
