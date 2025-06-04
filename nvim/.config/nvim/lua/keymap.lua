@@ -23,7 +23,7 @@ end
 
 -- code navigation map
 map('n', '<C-p>', require("fzf-lua").files, default_opt)
-map('n', '<C-g>', require("fzf-lua").grep_project, default_opt)
+map('n', '<C-g>', require("fzf-lua").grep, default_opt)
 
 map('n', '<leader>b', '<C-w>l', default_opt)
 map('n', '<leader>t', '<cmd>NvimTreeToggle<cr>', default_opt)
@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('n', 'gd', require("fzf-lua").lsp_definitions, opts)
     map('n', 'gi', require("fzf-lua").lsp_implementations, opts)
     map('n', 'gr', require("fzf-lua").lsp_references, opts)
+    map('n', 'gs', require("fzf-lua").lsp_live_workspace_symbols, opts)
 
     map('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     map('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
@@ -63,6 +64,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)
+    map('n', '<C-l>', require("fzf-lua").lsp_document_symbols, default_opt)
   end,
 })
 

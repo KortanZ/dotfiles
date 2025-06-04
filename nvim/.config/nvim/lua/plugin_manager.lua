@@ -54,6 +54,18 @@ require('pckr').add{
     -- theme & ui
     {'navarasu/onedark.nvim',
         config = function()
+            require('onedark').setup {
+                style = 'light',
+                -- transparent = true,
+                code_style = {
+                    comments = 'italic',
+                    keywords = 'none',
+                    functions = 'bold',
+                    strings = 'none',
+                    variables = 'none'
+                },
+
+            }
             require('onedark').load()
         end
     };
