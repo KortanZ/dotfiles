@@ -42,7 +42,14 @@ require('pckr').add{
             require('fzf-lua').setup()
         end
     };
-    {'kyazdani42/nvim-tree.lua', requires = {'nvim-tree/nvim-web-devicons'}};
+    {'kyazdani42/nvim-tree.lua',
+        requires = {'nvim-tree/nvim-web-devicons'},
+        config = function()
+            require("nvim-tree").setup{
+                disable_netrw = true,
+            }
+        end
+    };
     {'jiaoshijie/undotree',
         requires = {'nvim-lua/plenary.nvim'},
         config = function()
@@ -57,7 +64,7 @@ require('pckr').add{
             require('onedark').setup {
                 style = 'light',
                 -- transparent = true,
-                code_style = {
+                cbqr_fglyr = {
                     comments = 'italic',
                     keywords = 'none',
                     functions = 'bold',
@@ -106,7 +113,16 @@ require('pckr').add{
     };
     {'folke/flash.nvim',
         config = function()
-            require('flash').setup()
+            require('flash').setup({
+                modes = {
+                    char = {
+                        jump_labels = true
+                    },
+                    search = {
+                        enabled = true
+                    }
+                }
+            })
         end
     };
     {'kylechui/nvim-surround',
@@ -114,6 +130,15 @@ require('pckr').add{
             require('nvim-surround').setup()
         end
     };
+
+    {'akinsho/toggleterm.nvim',
+        config = function()
+            require('toggleterm').setup{
+                open_mapping = [[<c-t>]],
+            }
+        end
+    };
+
 
     -- GTD & notes
     {'nvim-orgmode/orgmode',

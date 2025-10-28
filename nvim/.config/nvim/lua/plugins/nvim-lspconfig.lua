@@ -1,12 +1,26 @@
 -- Setup language servers.
-local lspconfig = require('lspconfig')
 local tags_loaded = vim.fn.tagfiles()
-local map = vim.keymap.set
 
--- Only setup clangd when not use ctags
+-- Extend lspconfig's rust_analyzer config
+vim.lsp.config('rust_analyzer', {
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = true;
+      }
+    }
+  }
+  -- on_attach = function(client, bufnr)
+  --     vim.lsp.inlay_hint.enable(true, {bufnr})
+  -- end
+})
+
+-- Only enable clangd when not use ctags
 if next(tags_loaded) == nil then
-    lspconfig.clangd.setup {}
+    vim.lsp.enable('clangd')
 end
 
-lspconfig.rust_analyzer.setup {}
-lspconfig.pylsp.setup {}
+vim.lsp.enable('rust_analyzer')
+
+vim.lsp.enable('pylsp')
+

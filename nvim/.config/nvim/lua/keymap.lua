@@ -25,8 +25,8 @@ end
 map('n', '<C-p>', require("fzf-lua").files, default_opt)
 map('n', '<C-g>', require("fzf-lua").grep, default_opt)
 
-map('n', '<leader>b', '<C-w>l', default_opt)
-map('n', '<leader>t', '<cmd>NvimTreeToggle<cr>', default_opt)
+-- map('n', '<leader>b', '<C-w>l', default_opt)
+map('n', '<leader>t', require("nvim-tree.api").tree.toggle, default_opt)
 
 
 -- Global mappings.
@@ -71,6 +71,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Flash
 map({'n', 'x', 'o'}, 's', require("flash").jump, default_opt)
 map({'n', 'x', 'o'}, 'S', require("flash").treesitter, default_opt)
--- map( "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
--- map( "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
--- map( "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+map({'x', 'o'}, 'R', require("flash").treesitter_search, default_opt)
+-- map( "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" ),
+-- map( "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search"),
+-- map( "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search"),
