@@ -35,6 +35,14 @@ require('pckr').add{
         config = 'plugins/nvim-cmp'
     };
 
+    -- find & replace
+    {'MagicDuck/grug-far.nvim',
+        requires = {'nvim-tree/nvim-web-devicons'},
+        config = function()
+            require('grug-far').setup()
+        end
+    };
+
     -- widget
     {'ibhagwan/fzf-lua',
         requires = {'nvim-tree/nvim-web-devicons'},
@@ -42,7 +50,7 @@ require('pckr').add{
             require('fzf-lua').setup()
         end
     };
-    {'kyazdani42/nvim-tree.lua',
+    {'nvim-tree/nvim-tree.lua',
         requires = {'nvim-tree/nvim-web-devicons'},
         config = function()
             require("nvim-tree").setup{
@@ -50,12 +58,7 @@ require('pckr').add{
             }
         end
     };
-    {'jiaoshijie/undotree',
-        requires = {'nvim-lua/plenary.nvim'},
-        config = function()
-            require('undotree').setup()
-        end
-    };
+
     'sindrets/diffview.nvim';
 
     -- theme & ui
@@ -89,7 +92,7 @@ require('pckr').add{
         config = 'plugins/lualine'
 
     };
-    {'yamatsum/nvim-cursorline',
+    {'ya2s/nvim-cursorline',
         config = function()
             require('nvim-cursorline').setup()
         end
@@ -139,17 +142,28 @@ require('pckr').add{
         end
     };
 
-
-    -- GTD & notes
-    {'nvim-orgmode/orgmode',
-        require = {'nvim-orgmode/org-bullets.nvim'},
-        config = 'plugins/orgmode'
-    };
-    {'nvim-orgmode/org-bullets.nvim',
+    -- AI
+    {'coder/claudecode.nvim',
+        requires = {'folke/snacks.nvim'},
         config = function()
-            require('org-bullets').setup({
-                concealcursor = true,
-            })
+            require('claudecode').setup()
         end
     };
+
+
+    -- KeyMap
+    {'folke/which-key.nvim',
+        requires = {'nvim-tree/nvim-web-devicons'},
+        config = function()
+            require('which-key').setup()
+        end
+    };
+
+    -- Git
+    {'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    };
+
 }

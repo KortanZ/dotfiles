@@ -18,6 +18,7 @@ opt.conceallevel = 2
 opt.concealcursor = 'nc'
 
 g.mapleader = ";"
+g.maplocalleader = ","
 
 vim.g.clipboard = {
   name = 'WslClipboard',
