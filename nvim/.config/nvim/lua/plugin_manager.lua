@@ -65,8 +65,8 @@ require('pckr').add{
     {'navarasu/onedark.nvim',
         config = function()
             require('onedark').setup {
-                style = 'light',
-                -- transparent = true,
+                -- style = 'light',
+                transparent = true,
                 cbqr_fglyr = {
                     comments = 'italic',
                     keywords = 'none',
